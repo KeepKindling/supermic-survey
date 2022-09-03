@@ -18,9 +18,14 @@ edm = SHEET.worksheet('edm')
 rock = SHEET.worksheet('rock')
 metal = SHEET.worksheet('metal')
 
-user_info = []
 
 def get_info():
+    """
+    Collects name, age and gender from the user.
+    Appends the values to a list to be inserted into a worksheet.
+    """
+    user_info = []
+
     print()
     print("Please enter your full name.")
     print("Name must only include letters. No numbers or symbols.\n")
@@ -45,7 +50,26 @@ def get_info():
 
     user_info.append(gender)
 
+
     return user_info
+
+
+def validate_info(user_info):
+    """
+    Checks name is made up of letters only, that age is 
+    an integer, and gender is 1 of the three options.
+    Will print an error otherwise.
+    """
+    try:
+        if user_info[0] != str():
+            raise ValueError(
+                f"You can only use letters for your name. You entered {name}"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e} Please try again.\n")
+
+
+
 
 print("Hello there!")
 print("Welcome to our survey created by and for SuperMic Productions.\n")
