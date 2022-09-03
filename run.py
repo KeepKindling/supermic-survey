@@ -14,6 +14,10 @@ SHEET = GSPREAD_CLIENT.open('popular_music_survey')
 
 hip_hop = SHEET.worksheet('hip-hop')
 
-data = hip_hop.get_all_values()
 
-print(data)
+
+print("Hello there!")
+print("Welcome to our survey created by and for SuperMic Productions.")
+print("You will be asked to choose genre options you want to give infoormation for.")
+print("You can choose one, or all of the genres if you'd like!")
+print("Please be honest and input artists that belong in your chosen genres.")
