@@ -18,18 +18,23 @@ edm = SHEET.worksheet('edm')
 rock = SHEET.worksheet('rock')
 metal = SHEET.worksheet('metal')
 
+user_info = []
 
 def get_info():
     """
-    Collects name, age and gender from the user.
-    Appends the values to a list to be inserted into a worksheet.
+    First asks the user which genre they would like to use.
+    Then adds inputted name, age and gender values to relevant genre worksheet.
     """
-    user_info = []
+    print("Please choose one of the following genre options")
+
+    genre = input("Choose Hip-hop, Pop, Edm, Rock or Metal:\n")
+
 
     print()
     print("Please enter your full name.")
     print("Name must only include letters. No numbers or symbols.\n")
 
+    global name
     name = input("Enter your name here:\n")
 
     user_info.append(name)
@@ -38,35 +43,38 @@ def get_info():
     print("Please enter your age.")
     print("Age must consist of numbers only. No letters or symbols.")
 
+    global age
     age = input("Enter your age here:\n")
-
-    user_info.append(age)
     
     print()
     print("Please enter your gender identity.")
     print("Please choose between Male, Female and Prefer not to say.")
 
+    global gender
     gender = input("Enter your gender here:\n")
 
-    user_info.append(gender)
+    validate_info()
 
 
-    return user_info
 
 
-def validate_info(user_info):
+
+def validate_info():
     """
-    Checks name is made up of letters only, that age is 
-    an integer, and gender is 1 of the three options.
+    Checks name is made up of letters only.
     Will print an error otherwise.
     """
     try:
-        if user_info[0] != str():
+        if name != str:
             raise ValueError(
-                f"You can only use letters for your name. You entered {name}"
+                f"You can only use letters for your name. You entered {name}."
             )
     except ValueError as e:
         print(f"Invalid data: {e} Please try again.\n")
+        
+        return False
+    
+    return True
 
 
 
