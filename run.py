@@ -34,21 +34,18 @@ def get_info():
     print("Please enter your full name.")
     print("Name must only include letters. No numbers or symbols.\n")
 
-    """
-    global name
-    name = input("Enter your name here:\n")
-    """
-
     validate_name()
     user_info.append(name)
+    print(user_info)
 
     print()
     print("Please enter your age.")
     print("Age must consist of numbers only. No letters or symbols.")
 
-    global age
-    age = input("Enter your age here:\n")
-    
+    validate_age()
+    user_info.append(age)
+    print(user_info)
+
     print()
     print("Please enter your gender identity.")
     print("Please choose between Male, Female and Prefer not to say.")
@@ -56,19 +53,11 @@ def get_info():
     global gender
     gender = input("Enter your gender here:\n")
 
-    
-    
-    
-    
-
-
-
-
 
 def validate_name():
     """
-    Checks name is made up of letters only.
-    Will print an error otherwise.
+    Asks user to input name and runs an infinite loop
+    if they use invalid characters until they use letters only.
     """
     while True:
         try:
@@ -83,8 +72,27 @@ def validate_name():
             continue
         else:
             break
-    
 
+
+def validate_age():
+    """
+    Takes an input from the user, checks that it is an 
+    integer and converts it into a int because it is a number
+    inside of a string
+    """
+    while True:
+        try:
+            global age
+            age = input("Enter your age here:\n")
+            if (int(age)==age):
+                raise ValueError(
+                    f"You can only use letters for your name. You entered {name}."
+                )
+        except ValueError:
+            print("That value was invalid. Please use whole numbers.")
+            continue
+        else:
+            break
 
 
 
