@@ -53,7 +53,10 @@ def get_info():
     global gender
     gender = input("Enter your gender here:\n")
 
+    
     validate_info()
+    
+    
 
 
 
@@ -64,17 +67,16 @@ def validate_info():
     Checks name is made up of letters only.
     Will print an error otherwise.
     """
-    try:
-        if name != str:
+    
+    while True:
+        if not name.isalpha():
             raise ValueError(
                 f"You can only use letters for your name. You entered {name}."
             )
-    except ValueError as e:
-        print(f"Invalid data: {e} Please try again.\n")
-        
-        return False
-    
-    return True
+        else:
+            break
+        if name.isalpha():
+            continue
 
 
 
