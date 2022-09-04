@@ -34,9 +34,12 @@ def get_info():
     print("Please enter your full name.")
     print("Name must only include letters. No numbers or symbols.\n")
 
+    """
     global name
     name = input("Enter your name here:\n")
+    """
 
+    validate_name()
     user_info.append(name)
 
     print()
@@ -54,29 +57,33 @@ def get_info():
     gender = input("Enter your gender here:\n")
 
     
-    validate_info()
     
     
+    
 
 
 
 
 
-def validate_info():
+def validate_name():
     """
     Checks name is made up of letters only.
     Will print an error otherwise.
     """
-    
     while True:
-        if not name.isalpha():
-            raise ValueError(
-                f"You can only use letters for your name. You entered {name}."
-            )
+        try:
+            global name
+            name = input("Enter your name here: \n")
+            if not name.isalpha():
+                raise ValueError(
+                    f"You can only use letters for your name. You entered {name}."
+                )
+        except ValueError:
+            print("That value was invalid. Please try again.")
+            continue
         else:
             break
-        if name.isalpha():
-            continue
+    
 
 
 
