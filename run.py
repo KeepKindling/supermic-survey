@@ -20,6 +20,8 @@ metal_worksheet = SHEET.worksheet('metal')
 
 user_info = []
 valid_genders = ["M", "F", "N"]
+valid_genres = ["Hiphop", "Pop", "Edm", "Rock", "Metal"]
+
 def get_info():
     """
     First asks the user which genre they would like to use.
@@ -27,9 +29,9 @@ def get_info():
     """
     print("Please choose one of the following genre options")
 
-    genre global
-    genre = input("Choose Hip-hop, Pop, Edm, Rock or Metal:\n")
-
+    validate_genre()
+    user_info.append(genre)
+    print(user_info)
 
     print()
     print("Please enter your full name.")
@@ -54,6 +56,22 @@ def get_info():
     validate_gender()
     user_info.append(gender)
     print(user_info)
+
+
+def validate_genre():
+    """
+    Gives the user a choice from five genres to provide 
+    data for and then validates the input only allowing 
+    the strict choices but allowing uppercase or lowercase.
+    """
+    while True:
+        global genre
+        genre = input("Choose Hiphop, Pop, Edm, Rock or Metal:\n").capitalize()
+        if genre not in valid_genres:
+            print("That value was invalid. Please type one of the five options")
+            continue
+        else:
+            break
 
 
 def validate_name():
