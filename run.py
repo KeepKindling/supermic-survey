@@ -12,11 +12,11 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('popular_music_survey')
 
-hip_hop = SHEET.worksheet('hip-hop')
-pop = SHEET.worksheet('pop')
-edm = SHEET.worksheet('edm')
-rock = SHEET.worksheet('rock')
-metal = SHEET.worksheet('metal')
+hip_hop_worksheet = SHEET.worksheet('hip-hop')
+pop_worksheet = SHEET.worksheet('pop')
+edm_worksheet = SHEET.worksheet('edm')
+rock_worksheet = SHEET.worksheet('rock')
+metal_worksheet = SHEET.worksheet('metal')
 
 user_info = []
 valid_genders = ["M", "F", "N"]
@@ -27,6 +27,7 @@ def get_info():
     """
     print("Please choose one of the following genre options")
 
+    genre global
     genre = input("Choose Hip-hop, Pop, Edm, Rock or Metal:\n")
 
 
@@ -104,7 +105,7 @@ def validate_gender():
     """
     while True:
         global gender
-        gender = input("Enter your gender here:\n")
+        gender = input("Enter your gender here:\n").capitalize()
         if gender not in valid_genders:
             print("That value was invalid. Please choose one of the options.")
             continue
