@@ -19,7 +19,7 @@ rock = SHEET.worksheet('rock')
 metal = SHEET.worksheet('metal')
 
 user_info = []
-
+valid_genders = ["M", "F", "N"]
 def get_info():
     """
     First asks the user which genre they would like to use.
@@ -48,7 +48,7 @@ def get_info():
 
     print()
     print("Please enter your gender identity.")
-    print("Please choose between Male, Female and Prefer not to say.")
+    print("Choose M for Male, F for Female or N for Not applicable")
 
     validate_gender()
     user_info.append(gender)
@@ -103,29 +103,14 @@ def validate_gender():
     it into relevant genre worksheet
     """
     while True:
-        try:
-            global gender
-            gender = input("Enter your gender here:\n").capitalize()
-            if gender != "Male" or "Female" or "Prefer Not To Say":
-                raise ValueError(
-                    f"You must choose one of the three options. You entered {gender}"
-                )
-        except ValueError:
-            print("That value was not an option. Please try again.")
+        global gender
+        gender = input("Enter your gender here:\n")
+        if gender not in valid_genders:
+            print("That value was invalid. Please choose one of the options.")
             continue
         else:
             break
-
-
-            """
-            if gender == "Male" or "Female" or "Prefer Not To Say":
-                break
-            elif gender != "Male" or "Female" or "Prefer Not To Say":
-                print("That value was invalid. Please choose on of the three options")
-                continue
-            else:
-                continue
-            """        
+                
 
 print("Hello there!")
 print("Welcome to our survey created by and for SuperMic Productions.\n")
