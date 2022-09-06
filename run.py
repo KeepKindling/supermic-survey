@@ -182,6 +182,7 @@ def validate_gender():
 def main():
     get_personal_info()
     get_musician_data()
+
 print("Hello there!\n")
 print("Welcome to our survey created by and for SuperMic Productions.\n")
 print("You will be asked to choose a genre you want to give information for.\n")
