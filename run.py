@@ -19,7 +19,7 @@ rock_worksheet = SHEET.worksheet('rock')
 metal_worksheet = SHEET.worksheet('metal')
 
 user_info = []
-valid_genders = ["M", "F", "N"]
+valid_genders = ["Male", "Female", "Prefer not to say"]
 valid_genres = ["hiphop", "pop", "edm", "rock", "metal"]
 
 def get_info():
@@ -27,7 +27,7 @@ def get_info():
     First asks the user which genre they would like to use.
     Then adds inputted name, age and gender values to relevant genre worksheet.
     """
-    print("Please choose one of the following genre options")
+    print("Please choose one of the following genre options:")
 
     validate_genre()
     print(f"You have chosen {genre}")
@@ -50,7 +50,7 @@ def get_info():
 
     print()
     print("Please enter your gender identity.")
-    print("Choose M for Male, F for Female or N for Not applicable")
+    print("Choose Male, Female or Prefer not to say.")
 
     validate_gender()
     user_info.append(gender)
@@ -67,9 +67,9 @@ def validate_genre():
     """
     while True:
         global genre
-        genre = input("Choose Hiphop, Pop, Edm, Rock or Metal:\n").lower()
+        genre = input("Choose Hiphop, Pop, Edm, Rock or Metal.\n").lower()
         if genre not in valid_genres:
-            print("That value was invalid. Please type one of the five options")
+            print("That value was invalid. Please type one of the options")
             continue
         else:
             break
@@ -157,10 +157,11 @@ def validate_gender():
             break
                 
 
-print("Hello there!")
+print("Hello there!\n")
 print("Welcome to our survey created by and for SuperMic Productions.\n")
-print("You will be asked to choose genre options you want to give information for.")
-print("You can choose one, or all of the genres if you'd like!\n")
-print("Please be honest and input artists that belong in your chosen genres.\n")
+print("You will be asked to choose a genre you want to give information for.")
+print("""Keep in mind that you can only choose one, so if you'd like to do
+ an additional genre, you will have to do the survey again.\n""")
+print("Please be honest and input artists that belong in your chosen genre.\n")
 
 get_info()
