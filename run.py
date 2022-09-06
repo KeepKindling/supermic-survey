@@ -25,7 +25,8 @@ valid_genres = ["hiphop", "pop", "edm", "rock", "metal"]
 def get_personal_info():
     """
     First asks the user which genre they would like to use.
-    Then adds inputted name, age and gender values to relevant genre worksheet.
+    Then adds inputted name, age and gender values to 
+    relevant genre worksheet.
     """
     print("Please choose one of the following genre options:")
 
@@ -56,7 +57,25 @@ def get_personal_info():
     user_info.append(gender)
     print(user_info)
 
+    get_musician_data()
     update_genre_worksheet()
+
+    
+
+def get_musician_data():
+    """
+    Asks the user their favourite artist or band and song in their 
+    specified genre and forks the answer over to genre worksheet.
+    """
+    while True:
+        print(f"The genre you have chosen is {genre}")
+        valid_letters = ["Y", "N"]
+        double_check_genre = input("Is this correct? Y for yes or N for No").upper()
+        if double_check_genre not in valid_letters:
+            print("That value cannot be accepted. Please choose Y or N")
+            continue
+        else:
+            break
 
 
 def validate_genre():
@@ -158,8 +177,11 @@ def validate_gender():
             continue
         else:
             break
-                
 
+
+def main():
+    get_personal_info()
+    get_musician_data()
 print("Hello there!\n")
 print("Welcome to our survey created by and for SuperMic Productions.\n")
 print("You will be asked to choose a genre you want to give information for.\n")
@@ -167,4 +189,4 @@ print("""Keep in mind that you can only choose one, so if you'd like to do
 an additional genre, you will have to do the survey again.\n""")
 print("Please be honest and input artists that belong in your chosen genre.\n")
 
-get_personal_info()
+main()
