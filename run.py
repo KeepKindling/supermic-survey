@@ -60,9 +60,6 @@ def get_personal_info():
     user_info.append(gender)
     print(user_info)
 
-    print("Thank you for providing your personal details for our survey.\n")
-    print("You will now be asked to input your favourite artists and songs.")
-
     get_musician_data()
 
     update_genre_worksheet()
@@ -73,7 +70,15 @@ def get_musician_data():
     This will expect the user to provide their favourite artists and songs.
     Also give the user an option for recommending another artist.
     """
-    print(f"Please tell us your favorite artist from the genre {genre}:\n")
+    print("Thank you for providing your personal details for our survey.")
+    print("You will now be asked to input your favourite artists and songs.\n")
+    artist = input("Type your favourite artist or band here:\n").capitalize()
+    user_info.append(artist)
+
+    print(f"Below here, please enter your favourite song by {artist}")
+    print("Remember that being honest is all we ask during this survey\n")
+    song = input(f"Enter your favourite song by {artist} here:\n").capitalize()
+    user_info.append(song)
 
 
 def check_user_genre():
@@ -142,8 +147,8 @@ def validate_name():
     while True:
         try:
             global name
-            fname = input("Enter your first name here:\n")
-            lname = input("Enter your last name here:\n")
+            fname = input("Enter your first name here:\n").capitalize()
+            lname = input("Enter your last name here:\n").capitalize()
             space = ' '
             name = fname + space + lname
             if not fname.isalpha() or not lname.isalpha():
