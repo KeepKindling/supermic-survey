@@ -12,7 +12,7 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('popular_music_survey')
 
-hip_hop_worksheet = SHEET.worksheet('hip-hop')
+hiphop_worksheet = SHEET.worksheet('hiphop')
 pop_worksheet = SHEET.worksheet('pop')
 edm_worksheet = SHEET.worksheet('edm')
 rock_worksheet = SHEET.worksheet('rock')
@@ -20,7 +20,7 @@ metal_worksheet = SHEET.worksheet('metal')
 
 user_info = []
 valid_genders = ["M", "F", "N"]
-valid_genres = ["Hiphop", "Pop", "Edm", "Rock", "Metal"]
+valid_genres = ["hiphop", "pop", "edm", "rock", "metal"]
 
 def get_info():
     """
@@ -30,8 +30,7 @@ def get_info():
     print("Please choose one of the following genre options")
 
     validate_genre()
-    user_info.append(genre)
-    print(user_info)
+    print(f"You have chosen {genre}")
 
     print()
     print("Please enter your full name.")
@@ -57,22 +56,49 @@ def get_info():
     user_info.append(gender)
     print(user_info)
 
+    find_genre_worksheet()
+
 
 def validate_genre():
     """
     Gives the user a choice from five genres to provide 
     data for and then validates the input only allowing 
-    the strict choices but allowing uppercase or lowercase.
+    the strict choices but allowing only lowercase.
     """
     while True:
         global genre
-        genre = input("Choose Hiphop, Pop, Edm, Rock or Metal:\n").capitalize()
+        genre = input("Choose Hiphop, Pop, Edm, Rock or Metal:\n").lower()
         if genre not in valid_genres:
             print("That value was invalid. Please type one of the five options")
             continue
         else:
             break
 
+def find_genre_worksheet():
+    """
+    Check which genre the user chose and appends the users personal 
+    info to the relevant worksheet.
+    """
+    if genre == "hiphop":
+        print("Accessing hip hop worksheet...")
+        hiphop_worksheet.append_row(user_info)
+        print("Hip hop worksheet updated successfully!")
+    elif genre == "pop":
+        print("Accessing pop worksheet...")
+        pop_worksheet.append_row(user_info)
+        print("Pop worksheet updated successfully!")
+    elif genre == "edm":
+        print("Accessing edm worksheet...")
+        edm_worksheet.append_row(user_info)
+        print("Edm worksheet updated successfully!")
+    elif genre == "rock":
+        print("Accessing rock worksheet...")
+        rock_worksheet.append_row(user_info)
+        print("Rock worksheet updated successfully!")
+    else:
+        print("Accessing metal worksheet...")
+        metal_worksheet.append_row(user_info)
+        print("Metal worksheet updated successfully!")
 
 def validate_name():
     """
