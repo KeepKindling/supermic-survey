@@ -22,7 +22,7 @@ user_info = []
 valid_genders = ["Male", "Female", "Prefer not to say"]
 valid_genres = ["hiphop", "pop", "edm", "rock", "metal"]
 
-def get_info():
+def get_personal_info():
     """
     First asks the user which genre they would like to use.
     Then adds inputted name, age and gender values to relevant genre worksheet.
@@ -56,7 +56,7 @@ def get_info():
     user_info.append(gender)
     print(user_info)
 
-    find_genre_worksheet()
+    update_genre_worksheet()
 
 
 def validate_genre():
@@ -74,7 +74,7 @@ def validate_genre():
         else:
             break
 
-def find_genre_worksheet():
+def update_genre_worksheet():
     """
     Check which genre the user chose and appends the users personal 
     info to the relevant worksheet.
@@ -108,8 +108,11 @@ def validate_name():
     while True:
         try:
             global name
-            name = input("Enter your name here: \n")
-            if not name.isalpha():
+            fname = input("Enter your first name here:\n")
+            lname = input("Enter your last name here:\n")
+            space = ' '
+            name = fname + space + lname
+            if not fname.isalpha() or not lname.isalpha():
                 raise ValueError(
                     f"You can only use letters for your name. You entered {name}."
                 )
@@ -159,9 +162,9 @@ def validate_gender():
 
 print("Hello there!\n")
 print("Welcome to our survey created by and for SuperMic Productions.\n")
-print("You will be asked to choose a genre you want to give information for.")
-print("""Keep in mind that you can only choose one, so if you'd like to do
- an additional genre, you will have to do the survey again.\n""")
+print("You will be asked to choose a genre you want to give information for.\n")
+print("""Keep in mind that you can only choose one, so if you'd like to do 
+an additional genre, you will have to do the survey again.\n""")
 print("Please be honest and input artists that belong in your chosen genre.\n")
 
-get_info()
+get_personal_info()
