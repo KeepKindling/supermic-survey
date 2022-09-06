@@ -60,14 +60,26 @@ def get_personal_info():
     user_info.append(gender)
     print(user_info)
 
+    print("Thank you for providing your personal details for our survey.\n")
+    print("You will now be asked to input your favourite artists and songs.")
+
+    get_musician_data()
+
     update_genre_worksheet()
 
-    
+
+def get_musician_data():
+    """
+    This will expect the user to provide their favourite artists and songs.
+    Also give the user an option for recommending another artist.
+    """
+    print(f"Please tell us your favorite artist from the genre {genre}:\n")
+
 
 def check_user_genre():
     """
-    Asks the user their favourite artist or band and song in their 
-    specified genre and forks the answer over to genre worksheet.
+    asks the user to recall the genre they picked. If wrong then 
+    call parent method again to re-enter genre, if correct then continue.
     """
     while True:
         valid_letters = ["Y", "N"]
