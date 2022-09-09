@@ -145,18 +145,17 @@ def validate_name():
     if they use invalid characters until they use letters only.
     """
     while True:
-        try:
-            global name
-            fname = input("Enter your first name here:\n").capitalize()
-            lname = input("Enter your last name here:\n").capitalize()
-            space = ' '
-            name = fname + space + lname
-            if not fname.isalpha() or not lname.isalpha():
-                raise ValueError(
-                    f"You can only use letters for your name. You entered {name}."
-                )
-        except ValueError:
+        global name
+        fname = input("Enter your first name here:\n").capitalize()
+        lname = input("Enter your last name here:\n").capitalize()
+        space = ' '
+        name = fname + space + lname
+        if not fname.isalpha() or not lname.isalpha():
             print("That value was invalid. Please try again.")
+            continue
+        elif len(fname) > 15 or len(lname) > 15:
+            print("Error, first or last name cannot exceed 15 letters.")
+            print("Please try again.\n")
             continue
         else:
             break
