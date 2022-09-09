@@ -20,7 +20,7 @@ metal_worksheet = SHEET.worksheet('metal')
 
 user_info = []
 valid_genders = ["Male", "Female", "Prefer not to say"]
-valid_genres = ["hiphop", "pop", "edm", "rock", "metal"]
+valid_genres = {"1": "hiphop", "2": "pop", "3": "edm", "4": "rock", "5": "metal"}
 
 def get_personal_info():
     """
@@ -30,6 +30,7 @@ def get_personal_info():
     """
     print()
     print("Please choose one of the following genre options:")
+    print("Type 1. Hiphop, 2. Pop, 3. Edm, 4. Rock or 5. Metal\n")
 
     validate_genre()
     print(f"You have chosen {genre}")
@@ -106,7 +107,7 @@ def validate_genre():
     """
     while True:
         global genre
-        genre = input("Choose Hiphop, Pop, Edm, Rock or Metal.\n").lower()
+        genre = input("Choose 1, 2, 3, 4 or 5.\n")
         if genre not in valid_genres:
             print("That value was invalid. Please type one of the options")
             continue
@@ -173,7 +174,7 @@ def validate_age():
             if age.isalpha():
                 print("That value was invalid. Please try again")
                 print("Age must be a numeric value. No letters or symbols.")
-            elif float(age):
+            elif age == float(age):
                 print("That value was invalid. Please try again.")
                 print(f"Your age must be a whole number. you entere {age}.")
                 continue
