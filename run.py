@@ -168,18 +168,17 @@ def validate_age():
     inside of a string
     """
     while True:
-        try:
             global age
             age = input("Enter your age here:\n")
             if (int(age)==age):
-                raise ValueError(
-                    f"You can only use letters for your name. You entered {name}."
-                )
-        except ValueError:
-            print("That value was invalid. Please use whole numbers.")
-            continue
-        else:
-            break
+                print("That value was invalid. Please use whole numbers.")
+                continue
+            elif int(age) > 80 or int(age) < 16:
+                print("Error, age must be between 16 - 80.")
+                print(f"You entered {age}. Please try again.")
+                continue
+            else:
+                break
 
 
 def validate_gender():
