@@ -33,7 +33,7 @@ def get_personal_info():
     print("Type 1. Hiphop, 2. Pop, 3. Edm, 4. Rock or 5. Metal\n")
 
     validate_genre()
-    print(f"You have chosen {genre}")
+    print(f"You chose {genre}")
 
     check_user_genre()
 
