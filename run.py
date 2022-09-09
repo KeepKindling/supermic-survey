@@ -170,12 +170,19 @@ def validate_age():
     while True:
             global age
             age = input("Enter your age here:\n")
-            if (int(age)==age):
-                print("That value was invalid. Please use whole numbers.")
+            if age.isalpha():
+                print("That value was invalid. Please try again")
+                print("Age must be a numeric value. No letters or symbols.")
+            elif float(age):
+                print("That value was invalid. Please try again.")
+                print(f"Your age must be a whole number. you entere {age}.")
                 continue
             elif int(age) > 80 or int(age) < 16:
                 print("Error, age must be between 16 - 80.")
-                print(f"You entered {age}. Please try again.")
+                print(f"You entered {age}. Please try again.\n")
+                continue
+            elif (int(age)==age):
+                print("That value was invalid. Please use whole numbers.")
                 continue
             else:
                 break
