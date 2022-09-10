@@ -27,9 +27,9 @@ if __name__ == "__name__":
 
 def get_personal_info():
     """
-    First asks the user which genre they would like to use.
-    Then adds inputted name, age and gender values to 
-    relevant genre worksheet.
+    Runs other methods in order to collect genre, name, 
+    age and gender. Thise data is then returned and appended 
+    to corresponding genre worksheet.
     """
     print()
     print("Please choose one of the following genre options:")
@@ -71,8 +71,9 @@ def get_personal_info():
 
 def get_musician_data():
     """
-    This will expect the user to provide their favourite artists and songs.
-    Also give the user an option for recommending another artist.
+    Asks the user to provide their favourite artist and song for 
+    previously specified genre. returns this data and appends to a 
+    variable which is the passed to genre worksheet.
     """
     print("Thank you for providing your personal details for our survey.")
     print("You will now be asked to input your favourite artists and songs.\n")
@@ -87,8 +88,8 @@ def get_musician_data():
 
 def check_user_genre():
     """
-    asks the user to recall the genre they picked. If wrong then 
-    call parent method again to re-enter genre, if correct then continue.
+    Asks the user to verify they picked the correct genre. If yes, the program 
+    continues. If no, they can go back and choose the genre they want to use.
     """
     while True:
         valid_letters = ["Y", "N"]
@@ -104,9 +105,9 @@ def check_user_genre():
 
 def validate_genre():
     """
-    Gives the user a choice from five genres to provide 
-    data for and then validates the input only allowing 
-    the strict choices but allowing only lowercase.
+    Gives the user a choice from five genres to provide data for and then 
+    validates the input only allowing the strict choices but allowing only 
+    lowercase. Returns genre for later use as to which worksheet to update.
     """
     global genre
     while True:
@@ -120,8 +121,8 @@ def validate_genre():
 
 def update_genre_worksheet():
     """
-    Check which genre the user chose and appends the users personal 
-    info to the relevant worksheet.
+    Uses returned genre to access corresponding worksheet and updates 
+    it with user_info data.
     """
     if genre == "hiphop":
         print("Accessing hip hop worksheet...")
@@ -146,8 +147,8 @@ def update_genre_worksheet():
 
 def validate_name():
     """
-    Asks user to input name and runs an infinite loop
-    if they use invalid characters until they use letters only.
+    Gets the user to input their first and last name seperately.
+    This is then appended to a variable for later use.
     """
     global name
     while True:
@@ -168,9 +169,8 @@ def validate_name():
 
 def validate_age():
     """
-    Takes an input from the user, checks that it is an 
-    integer and converts it into a int because it is a number
-    inside of a string
+    Asks the user for their age and returns the value which is then 
+    later appended to a variable for updating worksheets afterwards.
     """
     global age
     while True:
@@ -195,9 +195,8 @@ def validate_age():
 
 def validate_gender():
     """
-    Asks the user what there gender is, checks that the 
-    value is strictly one of the three options and will pass 
-    it into relevant genre worksheet
+    Allows the user to choose one of three options and the appends 
+    that data to a variable to update genre worksheet later on.
     """
     global gender
     while True:
