@@ -22,6 +22,9 @@ user_info = []
 valid_genders = ["Male", "Female", "Prefer not to say"]
 valid_genres = {"1": "hiphop", "2": "pop", "3": "edm", "4": "rock", "5": "metal"}
 
+if __name__ == "__name__":
+    main()
+
 def get_personal_info():
     """
     First asks the user which genre they would like to use.
