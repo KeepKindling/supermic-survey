@@ -66,7 +66,7 @@ def get_personal_info():
     print("""Thankyou for your honest input. We are working to update 
     our spreadsheet with the data you have provided for us.""")
     print("Please wait a moment...")
-    update_genre_worksheet()
+    update_genre_worksheet(user_info)
 
 
 def get_musician_data():
@@ -121,31 +121,25 @@ def validate_genre():
     check_user_genre()
         
 
-def update_genre_worksheet():
+def update_genre_worksheet(user_info):
     """
     Uses returned genre to access corresponding worksheet and updates 
-    it with user_info data.
+    it with user_info data by appending it to a row.
     """
     if genre == "Hiphop":
-        print("Accessing hip hop worksheet...\n")
-        hiphop_worksheet.append_row(user_info)
-        print("Hip hop worksheet updated successfully!\n")
+        worksheet = hiphop_worksheet
     elif genre == "Pop":
-        print("Accessing pop worksheet...\n")
-        pop_worksheet.append_row(user_info)
-        print("Pop worksheet updated successfully!\n")
+        worksheet = pop_worksheet
     elif genre == "Edm":
-        print("Accessing edm worksheet...\n")
-        edm_worksheet.append_row(user_info)
-        print("Edm worksheet updated successfully!\n")
+        worksheet = edm_worksheet
     elif genre == "Rock":
-        print("Accessing rock worksheet...\n")
-        rock_worksheet.append_row(user_info)
-        print("Rock worksheet updated successfully!\n")
+        worksheet = rock_worksheet
     else:
-        print("Accessing metal worksheet...\n")
-        metal_worksheet.append_row(user_info)
-        print("Metal worksheet updated successfully!\n")
+        worksheet = metal_worksheet
+    
+    print(f"Accessing {genre.capitalize()} worksheet...")
+    worksheet.append_row(user_info)
+    print(f"{genre.capitalize()} worksheet updated successfully!")
 
 def validate_name():
     """
@@ -208,6 +202,8 @@ def validate_gender():
             continue
         else:
             break
+
+
 
 
 def main():
