@@ -1,3 +1,66 @@
+# SuperMic Productions Survey
+
+## About
+
+This a survey conducted by a made-up company called SuperMic Productions. Since there has been much growth over the past 10 years for number of artists, bands and musicians, the company cannot represent or publish everyones songs. Due to this increase in musical potential, the company needs a survey that will collect information from users. The survey will also allow users to request data from genre worksheets so they can see various information such as "Which genders prefer metal music" and so on.
+
+## User experience reserch and design
+
+### Strategy
+
+SuperMic Productions is in need of a survey that will efficiently collect data from users to see which artist and bands are the most popular. This information will prove paramount when deciding which artists to represent.
+
+The application should be able to successfully collect and process data into easily understandable and readable data. As to not have duplicate data, it will not allow a user to enter data for a genre if they have already done so. This is to keep results as true as possible otherwise, the company could make incorrect decisions based on false data. 
+
+The benefits of creating a user friendly survey that is very accessable online are as follows:
+- Program will not accept ridiculous answers sich as curse words or obviously wrong inputs like age as 1000 or 4
+- It will allow users to add info for each genre if they wish because users can have favourites from different genres
+- As it is an online survey, users need not worry about writing down their answers on paper and sending off the information
+- users personal information is protected and will not be shared to third party companys
+
+#### Leading User Stories
+
+As a user:
+
+- I want to be able to input my favourite artists and songs into the survey so I will be more likely to hear music from them in the future.
+- I want to be able to choose whether I want to share my gender identity.
+- I want to be able to share information for as many genres that are available.
+- I want my personal information (Name, Age, Gender) to be protected amd not shared to third party companys for advertisement.
+- I want to be able to request specific data from the survey so I can see what other people are listening to as to explore music further.
+
+As the owner:
+
+- I want to provide a survey that is quickly completed as to not take up lots of users time.
+- I want to collect data from users so I can make better decisions for who I should represent proffesionally in the music industry.
+- I want users to trust this survey will not share personal information with third party companys so they are more likely to participate in future surveys.
+- I want to be able to allow users to glean over other users data as to find recommendations for themselves.
+
+#### Strategy goals for the website
+
+- The application will be provide an easily accessable survey to efficiently collect information from users.
+- The questions in the survey will be easy to follow and only able to accept valid data
+- Users who enjoyed this survey and found it wuick and easy to complete will participate in other future surveys or questionaires we create.
+
+### Features
+
+#### Features Currently Used
+
+- A welcome message
+- Collects name and age
+- Gender options available
+- Double check correct genre choice as to prevent accidental input from user
+- Pass information to survey spreadsheet
+- Worksheet information accessable to users
+
+#### Non-Existant Features (Future Surveys)
+
+- Develop program to be phone and tablet friendly
+- Request users email to be sent future surveys
+- Allow users to create valid genres to add to spreadsheet
+- Ask the user for the address which would not be shared with anyone
+
+
+
 # Bugs/Issues encountered 
 - Whilst trying to validate the name variable inside of the get_info method, kept getting the error message "name is not defined". I think it's related to the scope of where I'm defining name. Tried using the global attribute in front of the name variable but did not fix it, currently stuck. ! Fixed the issue by using the global attribute correctly. I placed it in front of the name variable but i needed to give the variable global scope before defining it. not at the same time.
 - Attempting to validate the value of name to check it is only using alphabetical letters. if name != str():. This did not work so tried to use isalpha() but prints error message regardless of which characters are used when inputting name value. Also tried using a for loop that would iterate through each character of the value of name and use isalpha() to check for letters but did not work either. ! Fixed by removing the try statement and using a while True statement to check the entire value at once inside of name. Credit to sean at code institute tutor session for help with this solve.
@@ -14,3 +77,4 @@
 # Issues unsolved
 
 - If the user enters a value like 2.d2, The program brings up an error as it cant be converted to float so they if statement cannot be run.
+- When replacing list of valid genres with dict of valid genres, causes program to always update metal worksheet regardless of user input.
