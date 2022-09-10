@@ -108,14 +108,15 @@ def validate_genre():
     data for and then validates the input only allowing 
     the strict choices but allowing only lowercase.
     """
+    global genre
     while True:
-        global genre
         genre = input("Choose 1, 2, 3, 4 or 5.\n")
         if genre not in valid_genres:
             print("That value was invalid. Please type one of the options")
             continue
         else:
             break
+        
 
 def update_genre_worksheet():
     """
@@ -148,8 +149,8 @@ def validate_name():
     Asks user to input name and runs an infinite loop
     if they use invalid characters until they use letters only.
     """
+    global name
     while True:
-        global name
         fname = input("Enter your first name here:\n").capitalize()
         lname = input("Enter your last name here:\n").capitalize()
         space = ' '
@@ -171,8 +172,8 @@ def validate_age():
     integer and converts it into a int because it is a number
     inside of a string
     """
+    global age
     while True:
-            global age
             age = input("Enter your age here:\n")
             if age.isalpha():
                 print("That value was invalid. Please try again")
@@ -198,8 +199,8 @@ def validate_gender():
     value is strictly one of the three options and will pass 
     it into relevant genre worksheet
     """
+    global gender
     while True:
-        global gender
         gender = input("Enter your gender here:\n").capitalize()
         if gender not in valid_genders:
             print("That value was invalid. Please choose one of the options.")
