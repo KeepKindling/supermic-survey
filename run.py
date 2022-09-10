@@ -20,7 +20,7 @@ metal_worksheet = SHEET.worksheet('metal')
 
 user_info = []
 valid_genders = ["Male", "Female", "Prefer not to say"]
-valid_genres = {"1": "hiphop", "2": "pop", "3": "edm", "4": "rock", "5": "metal"}
+valid_genres = ["Hiphop", "Pop", "Edm", "Rock", "Metal"]
 
 if __name__ == "__name__":
     main()
@@ -33,12 +33,9 @@ def get_personal_info():
     """
     print()
     print("Please choose one of the following genre options:")
-    print("Type 1. Hiphop, 2. Pop, 3. Edm, 4. Rock or 5. Metal\n")
+    print("Type Hiphop, Pop, Edm, Rock or Metal\n")
 
     validate_genre()
-    print(f"You chose {genre}")
-
-    check_user_genre()
 
     print()
     print("Please enter your full name.")
@@ -66,6 +63,9 @@ def get_personal_info():
 
     get_musician_data()
 
+    print("""Thankyou for your honest input. We are working to update 
+    our spreadsheet with the data you have provided for us.""")
+    print("Please wait a moment...")
     update_genre_worksheet()
 
 
@@ -81,7 +81,6 @@ def get_musician_data():
     user_info.append(artist)
 
     print(f"Below here, please enter your favourite song by {artist}")
-    print("Remember that being honest is all we ask during this survey\n")
     song = input(f"Enter your favourite song by {artist} here:\n").capitalize()
     user_info.append(song)
 
@@ -93,7 +92,7 @@ def check_user_genre():
     """
     while True:
         valid_letters = ["Y", "N"]
-        double_check_genre = input("Is this correct? Y for yes or N for No\n").upper()
+        double_check_genre = input("Is this right? Y yes or N No\n").upper()
         if double_check_genre not in valid_letters:
             print("That value cannot be accepted. Please choose Y or N")
             continue
@@ -111,12 +110,15 @@ def validate_genre():
     """
     global genre
     while True:
-        genre = input("Choose 1, 2, 3, 4 or 5.\n")
+        genre = input("Choose Hiphop, Pop, Edm, Rock or Metal.\n").capitalize()
         if genre not in valid_genres:
             print("That value was invalid. Please type one of the options")
             continue
         else:
             break
+    print(f"You chose {genre}")
+
+    check_user_genre()
         
 
 def update_genre_worksheet():
@@ -124,26 +126,26 @@ def update_genre_worksheet():
     Uses returned genre to access corresponding worksheet and updates 
     it with user_info data.
     """
-    if genre == "hiphop":
-        print("Accessing hip hop worksheet...")
+    if genre == "Hiphop":
+        print("Accessing hip hop worksheet...\n")
         hiphop_worksheet.append_row(user_info)
-        print("Hip hop worksheet updated successfully!")
-    elif genre == "pop":
-        print("Accessing pop worksheet...")
+        print("Hip hop worksheet updated successfully!\n")
+    elif genre == "Pop":
+        print("Accessing pop worksheet...\n")
         pop_worksheet.append_row(user_info)
-        print("Pop worksheet updated successfully!")
-    elif genre == "edm":
-        print("Accessing edm worksheet...")
+        print("Pop worksheet updated successfully!\n")
+    elif genre == "Edm":
+        print("Accessing edm worksheet...\n")
         edm_worksheet.append_row(user_info)
-        print("Edm worksheet updated successfully!")
-    elif genre == "rock":
-        print("Accessing rock worksheet...")
+        print("Edm worksheet updated successfully!\n")
+    elif genre == "Rock":
+        print("Accessing rock worksheet...\n")
         rock_worksheet.append_row(user_info)
-        print("Rock worksheet updated successfully!")
+        print("Rock worksheet updated successfully!\n")
     else:
-        print("Accessing metal worksheet...")
+        print("Accessing metal worksheet...\n")
         metal_worksheet.append_row(user_info)
-        print("Metal worksheet updated successfully!")
+        print("Metal worksheet updated successfully!\n")
 
 def validate_name():
     """
@@ -213,9 +215,18 @@ def main():
 
 print("Hello there!\n")
 print("Welcome to our survey created by and for SuperMic Productions.\n")
-print("You will be asked to choose a genre you want to give information for.\n")
-print("""Keep in mind that you can only choose one, so if you'd like to do 
-an additional genre, you will have to do the survey again.\n""")
-print("Please be honest and input artists that belong in your chosen genre.\n")
+print("""You will be asked to choose a genre you want to give information 
+for based on your likes. By helping us collect data with this survey, you 
+are contributing to keeping your favourite artists in the mix so you can 
+listen to them as much as you'd like. We appreciate your cooperation!\n""")
+print("""For this survey to do what it's supposed to and collect real data, 
+keep in mind that honesty is paramount and we trust that you and other users 
+will follow this practice. After all, we just want to represent your 
+favourite artists and bands.\n""")
+print("""With that being said try to name artists that belong in your chosen 
+genre. That way we have honest data that we can rely on. If you would like 
+to enter information for more than one genre, you will have to repeat the 
+survey and choose other genres but you will not be able to do the same genre
+more than once.\n""")
 
 main()
