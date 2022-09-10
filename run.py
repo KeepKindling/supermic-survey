@@ -196,7 +196,7 @@ def validate_age():
 def validate_gender():
     """
     Allows the user to choose one of three options and the appends 
-    that data to a variable to update genre worksheet later on.
+    that data to a variable to update genre worksheet later.
     """
     global gender
     while True:
