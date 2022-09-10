@@ -21,6 +21,7 @@ metal_worksheet = SHEET.worksheet('metal')
 user_info = []
 valid_genders = ["Male", "Female", "Prefer not to say"]
 valid_genres = ["Hiphop", "Pop", "Edm", "Rock", "Metal"]
+valid_letters = ["Y", "N"]
 
 if __name__ == "__name__":
     main()
@@ -63,16 +64,16 @@ def get_personal_info():
 
     get_musician_data()
 
-    print("""Thankyou for your honest input. We are working to update 
-    our spreadsheet with the data you have provided for us.""")
-    print("Please wait a moment...")
+    print("""Thankyou for your honest input. We are working to update
+    our spreadsheet with the data you have provided for us.\n""")
+    print("Please wait a moment...\n")
     update_genre_worksheet(user_info)
 
 
 def get_musician_data():
     """
-    Asks the user to provide their favourite artist and song for 
-    previously specified genre. returns this data and appends to a 
+    Asks the user to provide their favourite artist and song for
+    previously specified genre. returns this data and appends to a
     variable which is the passed to genre worksheet.
     """
     print("Thank you for providing your personal details for our survey.")
@@ -91,7 +92,6 @@ def check_user_genre():
     continues. If no, they can go back and choose the genre they want to use.
     """
     while True:
-        valid_letters = ["Y", "N"]
         double_check_genre = input("Is this right? Y yes or N No\n").upper()
         if double_check_genre not in valid_letters:
             print("That value cannot be accepted. Please choose Y or N")
@@ -137,9 +137,9 @@ def update_genre_worksheet(user_info):
     else:
         worksheet = metal_worksheet
     
-    print(f"Accessing {genre.capitalize()} worksheet...")
+    print(f"Accessing {genre.capitalize()} worksheet...\n")
     worksheet.append_row(user_info)
-    print(f"{genre.capitalize()} worksheet updated successfully!")
+    print(f"{genre.capitalize()} worksheet updated successfully!\n")
 
 def validate_name():
     """
@@ -204,10 +204,40 @@ def validate_gender():
             break
 
 
+def restart_survey():
+    """
+    Asks the user to do the survey again. If yes, runs the program again.
+    If no, the program closes and thanks the user for participating.
+    """
+    print("Thankyou for completing this survey by SuperMic Productions.\n")
+    while True:
+        answer_again = input("""Would you like to do the survey again but for
+        a different genre?\n""").capitalize()
+
+        if answer_again not in valid_letters:
+            print("""Sorry but that value was unacceptable. Please type Y
+            for yes or N for no""")
+            continue
+        elif answer_again == "Y":
+            print("")
+            print("""You have chosen to complete this survey again
+            and we thankyou for your continued input. Users may only
+            add information once per genre so you will no longer be
+            to use any genres you have already answered for.""")
+            get_personal_info()
+        else:
+            print("")
+            print("""Thankyou again for participating in our survey. SuperMic
+            Productions is very greatful.\n""")
+            print("""Have a wonderful day and we hope to see you
+            again in our future survey's!\n""")
+            print("Goodbye.")
+
 
 
 def main():
     get_personal_info()
+    restart_survey()
 
 print("Hello there!\n")
 print("Welcome to our survey created by and for SuperMic Productions.\n")
