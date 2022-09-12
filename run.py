@@ -62,6 +62,8 @@ def get_personal_info():
     user_info.append(gender)
     print(user_info)
 
+    previous_user_entries_check()
+
     get_musician_data()
 
     print("""Thankyou for your honest input. We are working to update
@@ -203,6 +205,17 @@ def validate_gender():
         else:
             break
 
+def previous_user_entries_check():
+    """
+    When the user enters the genre they wish to use, the program checks that 
+    their name, age and gender collectively are not already in the 
+    relevant spreadsheet to prevent users from entering data into a 
+    genre worksheet more than once. If returns true, then the user will 
+    be taken back to choose another genre.
+    """
+    while True:
+        if user_info is in 
+
 
 def restart_survey():
     """
@@ -212,7 +225,7 @@ def restart_survey():
     print("Thankyou for completing this survey by SuperMic Productions.\n")
     while True:
         answer_again = input("""Would you like to do the survey again but for
-        a different genre?\n""").capitalize()
+        a different genre? Type Y for yes or N for no\n""").capitalize()
 
         if answer_again not in valid_letters:
             print("""Sorry but that value was unacceptable. Please type Y
@@ -226,12 +239,20 @@ def restart_survey():
             to use any genres you have already answered for.""")
             get_personal_info()
         else:
-            print("")
-            print("""Thankyou again for participating in our survey. SuperMic
-            Productions is very greatful.\n""")
-            print("""Have a wonderful day and we hope to see you
+            print("Thankyou again for participating in our survey.")
+            print("SuperMic Productions is very greatful.\n")
+            print("""Have a wonderful day and we hope to see you 
             again in our future survey's!\n""")
             print("Goodbye.")
+            break
+
+
+def duplicate_info_check():
+    """
+    Checks that name, age and gender are not all in a worksheet already.
+    Prevents users from adding information to the same genre more than once.
+    """
+
 
 
 

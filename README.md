@@ -59,7 +59,18 @@ As the owner:
 - Allow users to create valid genres to add to spreadsheet
 - Ask the user for the address which would not be shared with anyone
 
+### Structure
 
+The site will follow these strcutural guidelines:
+
+1. The user will be greeted and guided to how to answer the survey's questions
+2. They will then be asked to choose a genre they would like to provide information for
+3. If they have already used a genre, they will be told they cannot use a genre more than once
+4. Then will be asked to provide there first and last name, age and gender identity(an option is available to prefer not to say)
+5. Then be thanked for their personal info and assure the user it will remain protected from third party companys
+6. Asked to give their favorite artist and the artists song in their specified genre
+7. Notify the user that the worksheet of data is being updated and has done successfully
+8. User is finally asked if they want to provide information for another genre. If yes the program runs again, if no, The user is thanked again and the program bids goodbye
 
 # Bugs/Issues encountered 
 - Whilst trying to validate the name variable inside of the get_info method, kept getting the error message "name is not defined". I think it's related to the scope of where I'm defining name. Tried using the global attribute in front of the name variable but did not fix it, currently stuck. ! Fixed the issue by using the global attribute correctly. I placed it in front of the name variable but i needed to give the variable global scope before defining it. not at the same time.
