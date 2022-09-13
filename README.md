@@ -46,11 +46,28 @@ As the owner:
 #### Features Currently Used
 
 - A welcome message
-- Collects name and age
-- Gender options available
+
+![Welcome-Message](/images/greeting_message.png)
+
 - Double check correct genre choice as to prevent accidental input from user
+
+![Genre-Check](/images/genre_validation_check.png)
+
+- Collects name and age and gender identity
+
+![Personal-Info](/images/name_age_gender_validation.png)
+
+- Collects users artist and song choice
+
+![Survey-Question-Data](/images/artist_song_input.png)
+
+- Allows user to complete survey again for another genre
+
+![Survey-End](/images/end_survey.png)
+
 - Pass information to survey spreadsheet
-- Worksheet information accessable to users
+
+![Survey-spreadsheet-data](/images/data_collection.png)
 
 #### Non-Existant Features (Future Surveys)
 
