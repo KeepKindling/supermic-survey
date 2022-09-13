@@ -38,31 +38,26 @@ def get_personal_info():
 
     validate_genre()
 
-    print()
+    
     print("Please enter your full name.")
     print("Name must only include letters. No numbers or symbols.\n")
 
     validate_name()
     user_info.append(name)
-    print(user_info)
+    
 
-    print()
     print("Please enter your age.")
     print("Age must consist of numbers only. No letters or symbols.")
 
     validate_age()
     user_info.append(age)
-    print(user_info)
+    
 
-    print()
     print("Please enter your gender identity.")
     print("Choose Male, Female or Prefer not to say.")
 
     validate_gender()
     user_info.append(gender)
-    print(user_info)
-
-    previous_user_entries_check()
 
     get_musician_data()
 
@@ -205,16 +200,7 @@ def validate_gender():
         else:
             break
 
-def previous_user_entries_check():
-    """
-    When the user enters the genre they wish to use, the program checks that 
-    their name, age and gender collectively are not already in the 
-    relevant spreadsheet to prevent users from entering data into a 
-    genre worksheet more than once. If returns true, then the user will 
-    be taken back to choose another genre.
-    """
-    while True:
-        if user_info is in 
+
 
 
 def restart_survey():

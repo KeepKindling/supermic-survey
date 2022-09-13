@@ -72,6 +72,16 @@ The site will follow these strcutural guidelines:
 7. Notify the user that the worksheet of data is being updated and has done successfully
 8. User is finally asked if they want to provide information for another genre. If yes the program runs again, if no, The user is thanked again and the program bids goodbye
 
+### Flowchart
+
+A flowchart providing an easy step by step view of how the program will primarily run:
+
+![Flowchart](/images/supermic_survey_flowchart.jpeg)
+
+
+
+
+
 # Bugs/Issues encountered 
 - Whilst trying to validate the name variable inside of the get_info method, kept getting the error message "name is not defined". I think it's related to the scope of where I'm defining name. Tried using the global attribute in front of the name variable but did not fix it, currently stuck. ! Fixed the issue by using the global attribute correctly. I placed it in front of the name variable but i needed to give the variable global scope before defining it. not at the same time.
 - Attempting to validate the value of name to check it is only using alphabetical letters. if name != str():. This did not work so tried to use isalpha() but prints error message regardless of which characters are used when inputting name value. Also tried using a for loop that would iterate through each character of the value of name and use isalpha() to check for letters but did not work either. ! Fixed by removing the try statement and using a while True statement to check the entire value at once inside of name. Credit to sean at code institute tutor session for help with this solve.
