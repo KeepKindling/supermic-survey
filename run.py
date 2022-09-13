@@ -38,21 +38,21 @@ def get_personal_info():
 
     validate_genre()
 
-    
+    print()
     print("Please enter your full name.")
     print("Name must only include letters. No numbers or symbols.\n")
 
     validate_name()
     user_info.append(name)
     
-
+    print()
     print("Please enter your age.")
     print("Age must consist of numbers only. No letters or symbols.")
 
     validate_age()
     user_info.append(age)
     
-
+    print()
     print("Please enter your gender identity.")
     print("Choose Male, Female or Prefer not to say.")
 
@@ -61,8 +61,9 @@ def get_personal_info():
 
     get_musician_data()
 
-    print("""Thankyou for your honest input. We are working to update
-    our spreadsheet with the data you have provided for us.\n""")
+    print()
+    print("Thankyou for your honest input. We are working to update")
+    print("our spreadsheet with the data you have provided for us.\n")
     print("Please wait a moment...\n")
     update_genre_worksheet(user_info)
 
@@ -73,12 +74,13 @@ def get_musician_data():
     previously specified genre. returns this data and appends to a
     variable which is the passed to genre worksheet.
     """
+    print()
     print("Thank you for providing your personal details for our survey.")
     print("You will now be asked to input your favourite artists and songs.\n")
     artist = input("Type your favourite artist or band here:\n").capitalize()
     user_info.append(artist)
 
-    print(f"Below here, please enter your favourite song by {artist}")
+    print()
     song = input(f"Enter your favourite song by {artist} here:\n").capitalize()
     user_info.append(song)
 
@@ -167,23 +169,23 @@ def validate_age():
     """
     global age
     while True:
-            age = input("Enter your age here:\n")
-            if age.isalpha():
-                print("That value was invalid. Please try again")
-                print("Age must be a numeric value. No letters or symbols.")
-            elif age == float(age):
-                print("That value was invalid. Please try again.")
-                print(f"Your age must be a whole number. you entere {age}.")
-                continue
-            elif int(age) > 80 or int(age) < 16:
-                print("Error, age must be between 16 - 80.")
-                print(f"You entered {age}. Please try again.\n")
-                continue
-            elif (int(age)==age):
-                print("That value was invalid. Please use whole numbers.")
-                continue
-            else:
-                break
+        age = input("Enter your age here:\n")
+        if age.isalpha():
+            print("That value was invalid. Please try again")
+            print("Age must be a numeric value. No letters or symbols.")
+        elif age == float(age):
+            print("That value was invalid. Please try again.")
+            print(f"Your age must be a whole number. you entere {age}.")
+            continue
+        elif int(age) > 80 or int(age) < 16:
+            print("Error, age must be between 16 - 80.")
+            print(f"You entered {age}. Please try again.\n")
+            continue
+        elif (int(age)==age):
+            print("That value was invalid. Please use whole numbers.")
+            continue
+        else:
+            break
 
 
 def validate_gender():
@@ -210,25 +212,25 @@ def restart_survey():
     """
     print("Thankyou for completing this survey by SuperMic Productions.\n")
     while True:
-        answer_again = input("""Would you like to do the survey again but for
-        a different genre? Type Y for yes or N for no\n""").capitalize()
+        answer_again = input("Would you like to do the survey again but for " +
+                             "a different genre? Type Y for yes or " +
+                             "N for no\n").capitalize()
 
         if answer_again not in valid_letters:
             print("""Sorry but that value was unacceptable. Please type Y
             for yes or N for no""")
             continue
         elif answer_again == "Y":
-            print("")
-            print("""You have chosen to complete this survey again
-            and we thankyou for your continued input. Users may only
-            add information once per genre so you will no longer be
-            to use any genres you have already answered for.""")
+            print()
+            print("You have chosen to complete this survey again and we " +
+                  "thankyou for your input. Users may only add info " +
+                  "once per genre. You will no longer be to use any genres " +
+                  "you have already answered for.")
             get_personal_info()
         else:
-            print("Thankyou again for participating in our survey.")
-            print("SuperMic Productions is very greatful.\n")
-            print("""Have a wonderful day and we hope to see you 
-            again in our future survey's!\n""")
+            print("Thankyou again for participating in our survey. SuperMic " +
+                  "Productions is very greatful. Have a great day and we " +
+                  "hope to see you again in our future survey's!\n")
             print("Goodbye.")
             break
 
@@ -248,17 +250,17 @@ def main():
 
 print("Hello there!\n")
 print("Welcome to our survey created by and for SuperMic Productions.\n")
-print("""You will be asked to choose a genre you want to give information 
-for based on your likes. By helping us collect data with this survey, you 
-are contributing to keeping your favourite artists in the mix so you can 
+print("""You will be asked to choose a genre you want to give information
+for based on your likes. By helping us collect data with this survey, you
+are contributing to keeping your favourite artists in the mix so you can
 listen to them as much as you'd like. We appreciate your cooperation!\n""")
-print("""For this survey to do what it's supposed to and collect real data, 
-keep in mind that honesty is paramount and we trust that you and other users 
-will follow this practice. After all, we just want to represent your 
+print("""For this survey to do what it's supposed to and collect real data,
+keep in mind that honesty is paramount and we trust that you and other users
+will follow this practice. After all, we just want to represent your
 favourite artists and bands.\n""")
-print("""With that being said try to name artists that belong in your chosen 
-genre. That way we have honest data that we can rely on. If you would like 
-to enter information for more than one genre, you will have to repeat the 
+print("""With that being said try to name artists that belong in your chosen
+genre. That way we have honest data that we can rely on. If you would like
+to enter information for more than one genre, you will have to repeat the
 survey and choose other genres but you will not be able to do the same genre
 more than once.\n""")
 
