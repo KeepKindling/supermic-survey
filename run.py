@@ -12,16 +12,16 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('popular_music_survey')
 
-hiphop_worksheet = SHEET.worksheet('hiphop')
-pop_worksheet = SHEET.worksheet('pop')
-edm_worksheet = SHEET.worksheet('edm')
-rock_worksheet = SHEET.worksheet('rock')
-metal_worksheet = SHEET.worksheet('metal')
+HIPHOP_WORKSHEET = SHEET.worksheet('hiphop')
+POP_WORKSHEET = SHEET.worksheet('pop')
+EDM_WORKSHEET = SHEET.worksheet('edm')
+ROCK_WORKSHEET = SHEET.worksheet('rock')
+METAL_WORKSHEET = SHEET.worksheet('metal')
 
 user_info = []
-valid_genders = ["Male", "Female", "Prefer not to say"]
-valid_genres = ["Hiphop", "Pop", "Edm", "Rock", "Metal"]
-valid_letters = ["Y", "N"]
+VALID_GENDERS = ["Male", "Female", "Prefer not to say"]
+VALID_GENRES = ["Hiphop", "Pop", "Edm", "Rock", "Metal"]
+VALID_LETTERS = ["Y", "N"]
 
 
 def get_personal_info():
@@ -31,8 +31,7 @@ def get_personal_info():
     to corresponding genre worksheet.
     """
     print()
-    print("Please choose one of the following genre options:")
-    print("Type Hiphop, Pop, Edm, Rock or Metal\n")
+    print("Please choose one of the following genre options:\n")
 
     validate_genre()
 
@@ -75,11 +74,15 @@ def get_musician_data():
     print()
     print("Thank you for providing your personal details for our survey.")
     print("You will now be asked to input your favourite artists and songs.\n")
-    artist = input("Type your favourite artist or band here:\n").capitalize().strip()
+    artist = input("Type your favourite " +
+                   "artist or band here:\n").capitalize().strip()
+
     user_info.append(artist)
 
     print()
-    song = input(f"Enter your favourite song by {artist} here:\n").capitalize().strip()
+    song = input("Enter your favourite song " +
+                 f"by {artist} here:\n").capitalize().strip()
+
     user_info.append(song)
 
 
@@ -89,11 +92,12 @@ def check_user_genre():
     continues. If no, they can go back and choose the genre they want to use.
     """
     while True:
-        double_check_genre = input("Is this right? Y yes or N No\n").upper().strip()
-        if double_check_genre not in valid_letters:
+        double_check_genre = input("Is this right? " +
+                                   "Y yes or N No\n").upper().strip()
+        if double_check_genre not in VALID_LETTERS:
             print("That value cannot be accepted. Please choose Y or N")
             continue
-        elif double_check_genre == valid_letters[1]:
+        elif double_check_genre == VALID_LETTERS[1]:
             get_personal_info()
         else:
             break
@@ -107,8 +111,9 @@ def validate_genre():
     """
     global genre
     while True:
-        genre = input("Choose Hiphop, Pop, Edm, Rock or Metal.\n").capitalize().strip()
-        if genre not in valid_genres:
+        genre = input("Choose Hiphop, Pop, Edm, " +
+                      "Rock or Metal.\n").capitalize().strip()
+        if genre not in VALID_GENRES:
             print("That value was invalid. Please type one of the options")
             continue
         else:
@@ -124,15 +129,15 @@ def update_genre_worksheet(user_info):
     it with user_info data by appending it to a row.
     """
     if genre == "Hiphop":
-        worksheet = hiphop_worksheet
+        worksheet = HIPHOP_WORKSHEET
     elif genre == "Pop":
-        worksheet = pop_worksheet
+        worksheet = POP_WORKSHEET
     elif genre == "Edm":
-        worksheet = edm_worksheet
+        worksheet = EDM_WORKSHEET
     elif genre == "Rock":
-        worksheet = rock_worksheet
+        worksheet = ROCK_WORKSHEET
     else:
-        worksheet = metal_worksheet
+        worksheet = METAL_WORKSHEET
 
     print(f"Accessing {genre.capitalize()} worksheet...\n")
     worksheet.append_row(user_info)
@@ -170,7 +175,7 @@ def validate_age():
         if not age_input.isnumeric():
             print("That value was invalid. Please try again")
             print("Age must be a numeric value. No letters or symbols.")
-        
+
         age = int(age_input)
         if age > 80 or age < 16:
             print("Error, age must be between 16 - 80.")
@@ -187,7 +192,7 @@ def validate_gender():
     """
     while True:
         gender = input("Enter your gender here:\n").capitalize().strip()
-        if gender not in valid_genders:
+        if gender not in VALID_GENDERS:
             print("That value was invalid. Please choose one of the options.")
             continue
         else:
@@ -203,18 +208,16 @@ def restart_survey():
     while True:
         answer_again = input("Would you like to do the survey again but for " +
                              "a different genre? Type Y for yes or " +
-                             "N for no\n").capitalize().strip()
+                             "N for no.\n").capitalize().strip()
 
-        if answer_again not in valid_letters:
+        if answer_again not in VALID_LETTERS:
             print("""Sorry but that value was unacceptable. Please type Y
             for yes or N for no""")
             continue
         elif answer_again == "Y":
             print()
             print("You have chosen to complete this survey again and we " +
-                  "thankyou for your input. Users may only add info " +
-                  "once per genre. You will no longer be to use any genres " +
-                  "you have already answered for.")
+                  "thankyou for your continued input.")
             get_personal_info()
         else:
             print("Thankyou again for participating in our survey. SuperMic " +
@@ -222,13 +225,6 @@ def restart_survey():
                   "hope to see you again in our future survey's!\n")
             print("Goodbye.")
             break
-
-
-def duplicate_info_check():
-    """
-    Checks that name, age and gender are not all in a worksheet already.
-    Prevents users from adding information to the same genre more than once.
-    """
 
 
 def main():
@@ -252,8 +248,7 @@ favourite artists and bands.\n""")
 print("""With that being said try to name artists that belong in your chosen
 genre. That way we have honest data that we can rely on. If you would like
 to enter information for more than one genre, you will have to repeat the
-survey and choose other genres but you will not be able to do the same genre
-more than once.\n""")
+survey and choose the genre you want to do.\n""")
 
 if __name__ == "__main__":
     main()
