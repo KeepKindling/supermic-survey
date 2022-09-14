@@ -81,7 +81,7 @@ def get_musician_data():
 
     print()
     song = input("Enter your favourite song " +
-                 f"by {artist} here:\n").capitalize().strip()
+                 "here:\n").capitalize().strip()
 
     user_info.append(song)
 
