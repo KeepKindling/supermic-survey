@@ -34,27 +34,27 @@ def get_personal_info():
     print("Please choose one of the following genre options:")
     print("Type Hiphop, Pop, Edm, Rock or Metal\n")
 
-    validate_genre()
+    genre = validate_genre()
 
     print()
     print("Please enter your full name.")
     print("Name must only include letters. No numbers or symbols.\n")
 
-    validate_name()
+    name = validate_name()
     user_info.append(name)
 
     print()
     print("Please enter your age.")
     print("Age must consist of numbers only. No letters or symbols.")
 
-    validate_age()
+    age = validate_age()
     user_info.append(age)
 
     print()
     print("Please enter your gender identity.")
     print("Choose Male, Female or Prefer not to say.")
 
-    validate_gender()
+    gender = validate_gender()
     user_info.append(gender)
 
     get_musician_data()
@@ -105,15 +105,14 @@ def validate_genre():
     validates the input only allowing the strict choices but allowing only
     lowercase. Returns genre for later use as to which worksheet to update.
     """
-    global genre
     while True:
         genre = input("Choose Hiphop, Pop, Edm, Rock or Metal.\n").capitalize().strip()
         if genre not in valid_genres:
             print("That value was invalid. Please type one of the options")
             continue
         else:
-            break
-    print(f"You chose {genre}")
+            print(f"You chose {genre}")
+            return genre
 
     check_user_genre()
 
@@ -144,7 +143,6 @@ def validate_name():
     Gets the user to input their first and last name seperately.
     This is then appended to a variable for later use.
     """
-    global name
     while True:
         fname = input("Enter your first name here:\n").capitalize().strip()
         lname = input("Enter your last name here:\n").capitalize().strip()
@@ -158,7 +156,7 @@ def validate_name():
             print("Please try again.\n")
             continue
         else:
-            break
+            return name
 
 
 def validate_age():
@@ -166,25 +164,19 @@ def validate_age():
     Asks the user for their age and returns the value which is then
     later appended to a variable for updating worksheets afterwards.
     """
-    global age
     while True:
-        age = input("Enter your age here:\n")
-        if age.isalpha():
+        age_input = input("Enter your age here:\n").strip()
+        if not age_input.isnumeric():
             print("That value was invalid. Please try again")
             print("Age must be a numeric value. No letters or symbols.")
-        elif age == float(age):
-            print("That value was invalid. Please try again.")
-            print(f"Your age must be a whole number. you entere {age}.")
-            continue
-        elif int(age) > 80 or int(age) < 16:
+        
+        age = int(age_input)
+        if age > 80 or age < 16:
             print("Error, age must be between 16 - 80.")
             print(f"You entered {age}. Please try again.\n")
             continue
-        elif (int(age) == age):
-            print("That value was invalid. Please use whole numbers.")
-            continue
         else:
-            break
+            return age
 
 
 def validate_gender():
@@ -192,14 +184,13 @@ def validate_gender():
     Allows the user to choose one of three options and the appends
     that data to a variable to update genre worksheet later.
     """
-    global gender
     while True:
         gender = input("Enter your gender here:\n").capitalize().strip()
         if gender not in valid_genders:
             print("That value was invalid. Please choose one of the options.")
             continue
         else:
-            break
+            return gender
 
 
 def restart_survey():
