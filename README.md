@@ -75,6 +75,7 @@ As the owner:
 - Request users email to be sent future surveys
 - Allow users to create valid genres to add to spreadsheet
 - Ask the user for the address which would not be shared with anyone
+- Allow users to choose from "A, B, C, D or E" instead of typing the whole genre option
 
 ### Structure
 
@@ -95,7 +96,7 @@ A flowchart providing an easy step by step view of how the program will primaril
 
 ![Flowchart](/images/supermic_survey_flowchart.jpeg)
 
-### Bugs and Issues Encountered
+### Bugs and Issues Encountered (Fixed)
 
 1. Whilst trying to validate the name variable inside of the get_info method, I kept getting an error message "name is not defined". 
 - I reserched for a solution and came across the global attribute. I added it in front of name and then defined name below which worked great
@@ -124,11 +125,20 @@ A flowchart providing an easy step by step view of how the program will primaril
 9. Towards the end of the development, I changed some of my code so that name, age and gender did not need to have global attributes but instead have the methods return the value of the variables. Whilst trying to do this with genre, multiple lines of code displayed the error message "genre not defined".
 - As I was running low on time to figure out the solution to this, I reverted to my original code only for the get_genre method.
 
+### Unsolved Issues And Bugs
 
-# Issues unsolved
+This is a short list of issues I encountered that I couldn't solve either while testing code or changing for new code to improve the program. 
 
-- If the user enters a value like 2.d2, The program brings up an error as it cant be converted to float so they if statement cannot be run.
-- When replacing list of valid genres with dict of valid genres, causes program to always update metal worksheet regardless of user input.
+- For the get_age() method, I tested it by typing 2.d2, which caused the program to show an error because it cant be converted to a float and so the if statement cannot be run. This causes the program to end.
+- I attempted to replace the list of VALID_GENRES with a dictionary so the user could type 1, 2, 3, 4 or 5 instead of the individual genres but I couldn't figure out how to implement in properly so left it out.
+- Whilst testing the option of doing the survey and providing information for the same genre, the information does not append to a new row but is instead appended to the end of the row first used. 
+![Repeated_Genre_Test](/images/continue_survey_error.png)
+
+## Testing
+
+I used the appropriate validation service pep8 to check my code has no/least amount of issues as possible.
+![Pep8_Validation_Service](/images/pep8_validation_result.png)
+
 
 ### Credits
 Sean at code institute for a mentoring session to solve an issue
