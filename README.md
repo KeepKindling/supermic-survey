@@ -121,6 +121,9 @@ A flowchart providing an easy step by step view of how the program will primaril
 8. This bug occured immediatelt after solving issue no. 7. I would be given an error message during testing stating "Must be a whole number" which was because I converted age into a float. 
 - The solution was simple. I changed it to  elif age == float(age). Solved without any other issues.
 
+9. Towards the end of the development, I changed some of my code so that name, age and gender did not need to have global attributes but instead have the methods return the value of the variables. Whilst trying to do this with genre, multiple lines of code displayed the error message "genre not defined".
+- As I was running low on time to figure out the solution to this, I reverted to my original code only for the get_genre method.
+
 
 # Issues unsolved
 

@@ -34,7 +34,7 @@ def get_personal_info():
     print("Please choose one of the following genre options:")
     print("Type Hiphop, Pop, Edm, Rock or Metal\n")
 
-    genre = validate_genre()
+    validate_genre()
 
     print()
     print("Please enter your full name.")
@@ -105,6 +105,7 @@ def validate_genre():
     validates the input only allowing the strict choices but allowing only
     lowercase. Returns genre for later use as to which worksheet to update.
     """
+    global genre
     while True:
         genre = input("Choose Hiphop, Pop, Edm, Rock or Metal.\n").capitalize().strip()
         if genre not in valid_genres:
@@ -112,7 +113,7 @@ def validate_genre():
             continue
         else:
             print(f"You chose {genre}")
-            return genre
+            break
 
     check_user_genre()
 
