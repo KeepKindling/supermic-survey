@@ -23,9 +23,6 @@ valid_genders = ["Male", "Female", "Prefer not to say"]
 valid_genres = ["Hiphop", "Pop", "Edm", "Rock", "Metal"]
 valid_letters = ["Y", "N"]
 
-if __name__ == "__name__":
-    main()
-
 
 def get_personal_info():
     """
@@ -78,11 +75,11 @@ def get_musician_data():
     print()
     print("Thank you for providing your personal details for our survey.")
     print("You will now be asked to input your favourite artists and songs.\n")
-    artist = input("Type your favourite artist or band here:\n").capitalize()
+    artist = input("Type your favourite artist or band here:\n").capitalize().strip()
     user_info.append(artist)
 
     print()
-    song = input(f"Enter your favourite song by {artist} here:\n").capitalize()
+    song = input(f"Enter your favourite song by {artist} here:\n").capitalize().strip()
     user_info.append(song)
 
 
@@ -92,7 +89,7 @@ def check_user_genre():
     continues. If no, they can go back and choose the genre they want to use.
     """
     while True:
-        double_check_genre = input("Is this right? Y yes or N No\n").upper()
+        double_check_genre = input("Is this right? Y yes or N No\n").upper().strip()
         if double_check_genre not in valid_letters:
             print("That value cannot be accepted. Please choose Y or N")
             continue
@@ -110,7 +107,7 @@ def validate_genre():
     """
     global genre
     while True:
-        genre = input("Choose Hiphop, Pop, Edm, Rock or Metal.\n").capitalize()
+        genre = input("Choose Hiphop, Pop, Edm, Rock or Metal.\n").capitalize().strip()
         if genre not in valid_genres:
             print("That value was invalid. Please type one of the options")
             continue
@@ -149,8 +146,8 @@ def validate_name():
     """
     global name
     while True:
-        fname = input("Enter your first name here:\n").capitalize()
-        lname = input("Enter your last name here:\n").capitalize()
+        fname = input("Enter your first name here:\n").capitalize().strip()
+        lname = input("Enter your last name here:\n").capitalize().strip()
         space = ' '
         name = fname + space + lname
         if not fname.isalpha() or not lname.isalpha():
@@ -197,7 +194,7 @@ def validate_gender():
     """
     global gender
     while True:
-        gender = input("Enter your gender here:\n").capitalize()
+        gender = input("Enter your gender here:\n").capitalize().strip()
         if gender not in valid_genders:
             print("That value was invalid. Please choose one of the options.")
             continue
@@ -214,7 +211,7 @@ def restart_survey():
     while True:
         answer_again = input("Would you like to do the survey again but for " +
                              "a different genre? Type Y for yes or " +
-                             "N for no\n").capitalize()
+                             "N for no\n").capitalize().strip()
 
         if answer_again not in valid_letters:
             print("""Sorry but that value was unacceptable. Please type Y
@@ -249,6 +246,7 @@ def main():
     get_personal_info()
     restart_survey()
 
+
 print("Hello there!\n")
 print("Welcome to our survey created by and for SuperMic Productions.\n")
 print("""You will be asked to choose a genre you want to give information
@@ -265,4 +263,5 @@ to enter information for more than one genre, you will have to repeat the
 survey and choose other genres but you will not be able to do the same genre
 more than once.\n""")
 
-main()
+if __name__ == "__main__":
+    main()
