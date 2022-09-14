@@ -33,27 +33,27 @@ def get_personal_info():
     print()
     print("Please choose one of the following genre options:\n")
 
-    validate_genre()
+    get_genre()
 
     print()
     print("Please enter your full name.")
     print("Name must only include letters. No numbers or symbols.\n")
 
-    name = validate_name()
+    name = get_name()
     user_info.append(name)
 
     print()
     print("Please enter your age.")
     print("Age must consist of numbers only. No letters or symbols.")
 
-    age = validate_age()
+    age = get_age()
     user_info.append(age)
 
     print()
     print("Please enter your gender identity.")
     print("Choose Male, Female or Prefer not to say.")
 
-    gender = validate_gender()
+    gender = get_gender()
     user_info.append(gender)
 
     get_musician_data()
@@ -103,7 +103,7 @@ def check_user_genre():
             break
 
 
-def validate_genre():
+def get_genre():
     """
     Gives the user a choice from five genres to provide data for and then
     validates the input only allowing the strict choices but allowing only
@@ -144,7 +144,7 @@ def update_genre_worksheet(user_info):
     print(f"{genre.capitalize()} worksheet updated successfully!\n")
 
 
-def validate_name():
+def get_name():
     """
     Gets the user to input their first and last name seperately.
     This is then appended to a variable for later use.
@@ -165,7 +165,7 @@ def validate_name():
             return name
 
 
-def validate_age():
+def get_age():
     """
     Asks the user for their age and returns the value which is then
     later appended to a variable for updating worksheets afterwards.
@@ -185,7 +185,7 @@ def validate_age():
             return age
 
 
-def validate_gender():
+def get_gender():
     """
     Allows the user to choose one of three options and the appends
     that data to a variable to update genre worksheet later.
