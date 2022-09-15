@@ -47,27 +47,27 @@ As the owner:
 
 - A welcome message
 
-![Welcome-Message](/images/greeting_message.png)
+![Welcome-Message](images/greeting_message.png)
 
 - Double check correct genre choice as to prevent accidental input from user
 
-![Genre-Check](/images/genre_validation_check.png)
+![Genre-Check](images/genre_validation_check.png)
 
 - Collects name and age and gender identity
 
-![Personal-Info](/images/name_age_gender_validation.png)
+![Personal-Info](images/name_age_gender_validation.png)
 
 - Collects users artist and song choice
 
-![Survey-Question-Data](/images/artist_song_input.png)
+![Survey-Question-Data](images/artist_song_input.png)
 
 - Allows user to complete survey again for another genre
 
-![Survey-End](/images/end_survey.png)
+![Survey-End](images/end_survey.png)
 
 - Pass information to survey spreadsheet
 
-![Survey-spreadsheet-data](/images/data_collection.png)
+![Survey-spreadsheet-data](images/data_collection.png)
 
 #### Non-Existant Features (Future Surveys)
 
@@ -94,7 +94,7 @@ The site will follow these strcutural guidelines:
 
 A flowchart providing an easy step by step view of how the program will primarily run:
 
-![Flowchart](/images/supermic_survey_flowchart.jpeg)
+![Flowchart](images/supermic_survey_flowchart.jpeg)
 
 ### Bugs and Issues Encountered (Fixed)
 
@@ -132,13 +132,33 @@ This is a short list of issues I encountered that I couldn't solve either while 
 - For the get_age() method, I tested it by typing 2.d2, which caused the program to show an error because it cant be converted to a float and so the if statement cannot be run. This causes the program to end.
 - I attempted to replace the list of VALID_GENRES with a dictionary so the user could type 1, 2, 3, 4 or 5 instead of the individual genres but I couldn't figure out how to implement in properly so left it out.
 - Whilst testing the option of doing the survey and providing information for the same genre, the information does not append to a new row but is instead appended to the end of the row first used. 
-![Repeated_Genre_Test](/images/continue_survey_error.png)
+![Repeated_Genre_Test](images/continue_survey_error.png)
 
 ## Testing
 
 I used the appropriate validation service pep8 to check my code has no/least amount of issues as possible.
-![Pep8_Validation_Service](/images/pep8_validation_result.png)
+![Pep8_Validation_Service](images/pep8_validation_result.png)
+
+### Deployment
+
+Below is a step by step guide of how I deployed my application using heroku:
+
+1. From the Heroku dashboard, click "create new app".
+2. Give app a name and select region and click "create app".
+3. Go to the settings tab first.
+4. add convig var named CREDS using the value of the creds.json file as the value next to the key name.
+5. Add 2 buildpacks called python, and then nodejs. These buildpacks need to have python at the top. Click and drag if necessary.
+6. Head over to the deployment tab.
+7. In the deployment method section, choose github from the options provided.
+8. In the next section, type the name of your API file to link with your application "popular_music_survey" for this specific deployment.
+9. Finally, choose automatic deployment as to update the application with any necessary changes made in gitpod and click the view button beneath the complettion message to test or use the program.
+
+Should look like this:
+![Deployed-Survey-Application](images/deployed_survey_application.png)
 
 
 ### Credits
-Sean at code institute for a mentoring session to solve an issue
+- Sean at code institute for a mentoring session to solve an issue
+- My mentor Brian Macharia for continuous support and guidance
+- W3Schools.com for providing helpful code snippets to help with my issues and bugs
+- [Rickofmanc](https://github.com/RickofManc/vv-pizzas) RickofManc as I took inspiration from their readme presentation and layout.
