@@ -7,16 +7,16 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
     ]
 
-CREDS = Credentials.from_service_account_file('creds.json')
+CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('popular_music_survey')
+SHEET = GSPREAD_CLIENT.open("popular_music_survey")
 
-HIPHOP_WORKSHEET = SHEET.worksheet('hiphop')
-POP_WORKSHEET = SHEET.worksheet('pop')
-EDM_WORKSHEET = SHEET.worksheet('edm')
-ROCK_WORKSHEET = SHEET.worksheet('rock')
-METAL_WORKSHEET = SHEET.worksheet('metal')
+HIPHOP_WORKSHEET = SHEET.worksheet("hiphop")
+POP_WORKSHEET = SHEET.worksheet("pop")
+EDM_WORKSHEET = SHEET.worksheet("edm")
+ROCK_WORKSHEET = SHEET.worksheet("rock")
+METAL_WORKSHEET = SHEET.worksheet("metal")
 
 user_info = []
 VALID_GENDERS = ["Male", "Female", "Prefer not to say"]
@@ -152,7 +152,7 @@ def get_name():
     while True:
         fname = input("Enter your first name here:\n").capitalize().strip()
         lname = input("Enter your last name here:\n").capitalize().strip()
-        space = ' '
+        space = " "
         name = fname + space + lname
         if not fname.isalpha() or not lname.isalpha():
             print("That value was invalid. Please try again.")
